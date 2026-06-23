@@ -19,6 +19,7 @@ import struct
 import time
 import math
 from pathlib import Path
+import sys
 
 UPDATER_VERSION = "1.1"
 SERVER = "https://octowow.st"
@@ -26,6 +27,15 @@ DOWNLOAD_VERSION = "latest"
 OUT_DIR = "OctoWoW"
 UA = f"OctoWoWUpdater/{UPDATER_VERSION}"
 DOWNLOAD_RETRY_COUNT = 3
+
+
+
+
+# Get the directory where your script is stored
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Force Python to switch its focus to that directory (ensure it downloads in the folder the script sits)
+os.chdir(script_dir)
 
 
 def ensure_dir(path):
@@ -419,4 +429,4 @@ download_client(manifest)
 apply_patcher()
 
 print("\nEverything is ready! You can close this window.")
-input()
+input("\nPress Enter to exit...")
